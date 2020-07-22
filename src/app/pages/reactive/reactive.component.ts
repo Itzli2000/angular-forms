@@ -13,7 +13,7 @@ export class ReactiveComponent implements OnInit {
 
 
   constructor( private fb: FormBuilder,
-               private validadores: ValidadoresService ) { 
+               private validadores: ValidadoresService ) {
 
     this.crearFormulario();
     this.cargarDataAlFormulario();
@@ -29,27 +29,27 @@ export class ReactiveComponent implements OnInit {
   }
 
   get nombreNoValido() {
-    return this.forma.get('nombre').invalid && this.forma.get('nombre').touched
+    return this.forma.get('nombre').invalid && this.forma.get('nombre').touched;
   }
 
   get apellidoNoValido() {
-    return this.forma.get('apellido').invalid && this.forma.get('apellido').touched
+    return this.forma.get('apellido').invalid && this.forma.get('apellido').touched;
   }
 
   get correoNoValido() {
-    return this.forma.get('correo').invalid && this.forma.get('correo').touched
+    return this.forma.get('correo').invalid && this.forma.get('correo').touched;
   }
 
   get usuarioNoValido() {
-    return this.forma.get('usuario').invalid && this.forma.get('usuario').touched
+    return this.forma.get('usuario').invalid && this.forma.get('usuario').touched;
   }
 
   get distritoNoValido() {
-    return this.forma.get('direccion.distrito').invalid && this.forma.get('direccion.distrito').touched
+    return this.forma.get('direccion.distrito').invalid && this.forma.get('direccion.distrito').touched;
   }
 
   get ciudadNoValido() {
-    return this.forma.get('direccion.ciudad').invalid && this.forma.get('direccion.ciudad').touched
+    return this.forma.get('direccion.ciudad').invalid && this.forma.get('direccion.ciudad').touched;
   }
 
   get pass1NoValido() {
@@ -79,8 +79,8 @@ export class ReactiveComponent implements OnInit {
         ciudad  : ['', Validators.required ],
       }),
       pasatiempos: this.fb.array([])
-    },{
-      validators: this.validadores.passwordsIguales('pass1','pass2')
+    }, {
+      validators: this.validadores.passwordsIguales('pass1', 'pass2')
     });
 
   }
@@ -115,7 +115,7 @@ export class ReactiveComponent implements OnInit {
   agregarPasatiempo() {
     this.pasatiempos.push(  this.fb.control('')  );
   }
-  
+
   borrarPasatiempo(i: number) {
     this.pasatiempos.removeAt(i);
   }
@@ -127,16 +127,16 @@ export class ReactiveComponent implements OnInit {
     if ( this.forma.invalid ) {
 
       return Object.values( this.forma.controls ).forEach( control => {
-        
+
         if ( control instanceof FormGroup ) {
-          Object.values( control.controls ).forEach( control => control.markAsTouched() );
+          Object.values( control.controls ).forEach( controlChild => controlChild.markAsTouched() );
         } else {
           control.markAsTouched();
         }
-        
-        
+
+
       });
-     
+
     }
 
     // Posteo de información

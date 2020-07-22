@@ -15,7 +15,7 @@ export class TemplateComponent implements OnInit {
     correo: 'fernando@gmail.com',
     pais: 'CRI',
     genero: 'M'
-  }
+  };
 
   paises: any[] = [];
 
@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
         this.paises.unshift({
           nombre: '[ Seleccione Pais]',
           codigo: ''
-        })
+        });
 
         // console.log( this.paises );
       });
